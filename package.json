@@ -1,0 +1,20 @@
+{
+  "name": "marine-procurement-frontend",
+  "version": "1.0.0",
+  "description": "Frontend MVP for a Marine Procurement Management System",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "latest",
+    "vite": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-router-dom": "latest",
+    "lucide-react": "latest"
+  },
+  "devDependencies": {}
+}
