@@ -14,6 +14,7 @@ import paymentRoutes from "./routes/payment.routes.js";
 import reportRoutes from "./routes/report.routes.js";
 import auditRoutes from "./routes/audit.routes.js";
 import uploadRoutes from "./routes/upload.routes.js";
+import adminRoutes from "./routes/admin.routes.js";
 import { auditActivity } from "./middleware/audit.middleware.js";
 
 const app = express();
@@ -43,6 +44,7 @@ app.use("/api/payments", paymentRoutes);
 app.use("/api/reports", reportRoutes);
 app.use("/api/audit-logs", auditRoutes);
 app.use("/api/uploads", uploadRoutes);
+app.use("/api/admin", adminRoutes);
 
 app.use((req, res) => {
   res.status(404).json({ message: "Route not found" });
