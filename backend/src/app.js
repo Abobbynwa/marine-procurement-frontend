@@ -5,6 +5,9 @@ import healthRoutes from "./routes/health.routes.js";
 import userRoutes from "./routes/user.routes.js";
 import vendorRoutes from "./routes/vendor.routes.js";
 import requestRoutes from "./routes/request.routes.js";
+import rfqRoutes from "./routes/rfq.routes.js";
+import quotationRoutes from "./routes/quotation.routes.js";
+import poRoutes from "./routes/po.routes.js";
 
 const app = express();
 
@@ -22,6 +25,9 @@ app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/vendors", vendorRoutes);
 app.use("/api/purchase-requests", requestRoutes);
+app.use("/api/rfqs", rfqRoutes);
+app.use("/api/quotations", quotationRoutes);
+app.use("/api/purchase-orders", poRoutes);
 
 app.use((req, res) => {
   res.status(404).json({ message: "Route not found" });
