@@ -9,6 +9,9 @@ import Vendors from "./pages/Vendors.jsx";
 import RFQs from "./pages/RFQs.jsx";
 import Quotations from "./pages/Quotations.jsx";
 import PurchaseOrders from "./pages/PurchaseOrders.jsx";
+import Deliveries from "./pages/Deliveries.jsx";
+import Invoices from "./pages/Invoices.jsx";
+import Payments from "./pages/Payments.jsx";
 
 function ProtectedRoute({ children }) {
   const { isAuthenticated } = useAuth();
@@ -34,6 +37,9 @@ export default function App() {
         <Route path="rfqs" element={<RFQs />} />
         <Route path="quotations" element={<Quotations />} />
         <Route path="purchase-orders" element={<PurchaseOrders />} />
+        <Route path="deliveries" element={<Deliveries />} />
+        <Route path="invoices" element={<Invoices />} />
+        <Route path="payments" element={<Payments />} />
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
