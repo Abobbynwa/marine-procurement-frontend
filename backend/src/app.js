@@ -12,6 +12,8 @@ import deliveryRoutes from "./routes/delivery.routes.js";
 import invoiceRoutes from "./routes/invoice.routes.js";
 import paymentRoutes from "./routes/payment.routes.js";
 import reportRoutes from "./routes/report.routes.js";
+import auditRoutes from "./routes/audit.routes.js";
+import { auditActivity } from "./middleware/audit.middleware.js";
 
 const app = express();
 
@@ -23,6 +25,7 @@ app.use(
 );
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true }));
+app.use(auditActivity);
 
 app.use("/api/health", healthRoutes);
 app.use("/api/auth", authRoutes);
@@ -36,6 +39,7 @@ app.use("/api/deliveries", deliveryRoutes);
 app.use("/api/invoices", invoiceRoutes);
 app.use("/api/payments", paymentRoutes);
 app.use("/api/reports", reportRoutes);
+app.use("/api/audit-logs", auditRoutes);
 
 app.use((req, res) => {
   res.status(404).json({ message: "Route not found" });
