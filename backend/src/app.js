@@ -8,6 +8,9 @@ import requestRoutes from "./routes/request.routes.js";
 import rfqRoutes from "./routes/rfq.routes.js";
 import quotationRoutes from "./routes/quotation.routes.js";
 import poRoutes from "./routes/po.routes.js";
+import deliveryRoutes from "./routes/delivery.routes.js";
+import invoiceRoutes from "./routes/invoice.routes.js";
+import paymentRoutes from "./routes/payment.routes.js";
 
 const app = express();
 
@@ -28,6 +31,9 @@ app.use("/api/purchase-requests", requestRoutes);
 app.use("/api/rfqs", rfqRoutes);
 app.use("/api/quotations", quotationRoutes);
 app.use("/api/purchase-orders", poRoutes);
+app.use("/api/deliveries", deliveryRoutes);
+app.use("/api/invoices", invoiceRoutes);
+app.use("/api/payments", paymentRoutes);
 
 app.use((req, res) => {
   res.status(404).json({ message: "Route not found" });
