@@ -1,5 +1,6 @@
 import { query } from "../config/db.js";
 import { getPublicFileUrl } from "../middleware/upload.middleware.js";
+import { isS3Enabled, uploadFileToS3 } from "../utils/s3.js";
 
 export async function uploadDocument(req, res, next) {
   try {
@@ -8,7 +9,14 @@ export async function uploadDocument(req, res, next) {
     }
 
     const { entityType, entityId } = req.body;
-    const fileUrl = getPublicFileUrl(req.file.filename);
+    let storedName = req.file.filename;
+    let fileUrl = getPublicFileUrl(req.file.filename);
+
+    if (isS3Enabled()) {
+      const uploaded = await uploadFileToS3(req.file);
+      storedName = uploaded.storedName;
+      fileUrl = uploaded.fileUrl;
+    }
 
     const result = await query(
       `INSERT INTO uploaded_files (
@@ -19,7 +27,7 @@ export async function uploadDocument(req, res, next) {
        RETURNING *`,
       [
         req.file.originalname,
-        req.file.filename,
+        storedName,
         fileUrl,
         req.file.mimetype,
         req.file.size,
