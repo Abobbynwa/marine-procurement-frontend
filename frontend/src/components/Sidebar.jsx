@@ -11,7 +11,8 @@ import {
   Truck,
   FileText,
   CreditCard,
-  LineChart
+  LineChart,
+  ShieldCheck
 } from "lucide-react";
 
 const links = [
@@ -25,7 +26,8 @@ const links = [
   { to: "/deliveries", label: "Deliveries", icon: Truck },
   { to: "/invoices", label: "Invoices", icon: FileText },
   { to: "/payments", label: "Payments", icon: CreditCard },
-  { to: "/reports", label: "Reports", icon: LineChart }
+  { to: "/reports", label: "Reports", icon: LineChart },
+  { to: "/audit-logs", label: "Audit Logs", icon: ShieldCheck }
 ];
 
 export default function Sidebar() {
