@@ -13,13 +13,15 @@ import {
   CreditCard,
   LineChart,
   ShieldCheck,
-  FolderUp
+  FolderUp,
+  Settings
 } from "lucide-react";
 import { useAuth } from "../context/AuthContext.jsx";
 import { canAccess } from "../config/roleAccess.js";
 
 const links = [
   { to: "/", label: "Dashboard", icon: BarChart3 },
+  { to: "/admin-console", label: "Admin Console", icon: Settings },
   { to: "/requests", label: "Requests", icon: ClipboardList },
   { to: "/requests/new", label: "New Request", icon: FilePlus2 },
   { to: "/vendors", label: "Vendors", icon: Handshake },
