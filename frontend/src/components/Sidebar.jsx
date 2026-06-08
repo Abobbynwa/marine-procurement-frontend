@@ -12,8 +12,11 @@ import {
   FileText,
   CreditCard,
   LineChart,
-  ShieldCheck
+  ShieldCheck,
+  FolderUp
 } from "lucide-react";
+import { useAuth } from "../context/AuthContext.jsx";
+import { canAccess } from "../config/roleAccess.js";
 
 const links = [
   { to: "/", label: "Dashboard", icon: BarChart3 },
@@ -26,11 +29,15 @@ const links = [
   { to: "/deliveries", label: "Deliveries", icon: Truck },
   { to: "/invoices", label: "Invoices", icon: FileText },
   { to: "/payments", label: "Payments", icon: CreditCard },
+  { to: "/documents", label: "Documents", icon: FolderUp },
   { to: "/reports", label: "Reports", icon: LineChart },
   { to: "/audit-logs", label: "Audit Logs", icon: ShieldCheck }
 ];
 
 export default function Sidebar() {
+  const { user } = useAuth();
+  const visibleLinks = links.filter((link) => canAccess(user?.role, link.to));
+
   return (
     <aside className="sidebar">
       <div className="brand">
@@ -42,7 +49,7 @@ export default function Sidebar() {
       </div>
 
       <nav className="nav-list">
-        {links.map((link) => {
+        {visibleLinks.map((link) => {
           const Icon = link.icon;
           return (
             <NavLink key={link.to} to={link.to} end={link.to === "/"} className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`}>
