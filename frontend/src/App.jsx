@@ -13,6 +13,7 @@ import Deliveries from "./pages/Deliveries.jsx";
 import Invoices from "./pages/Invoices.jsx";
 import Payments from "./pages/Payments.jsx";
 import Reports from "./pages/Reports.jsx";
+import AuditLogs from "./pages/AuditLogs.jsx";
 
 function ProtectedRoute({ children }) {
   const { isAuthenticated } = useAuth();
@@ -42,6 +43,7 @@ export default function App() {
         <Route path="invoices" element={<Invoices />} />
         <Route path="payments" element={<Payments />} />
         <Route path="reports" element={<Reports />} />
+        <Route path="audit-logs" element={<AuditLogs />} />
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
