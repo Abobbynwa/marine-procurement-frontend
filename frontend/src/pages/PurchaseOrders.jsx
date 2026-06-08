@@ -65,6 +65,12 @@ export default function PurchaseOrders() {
     }
   }
 
+  function downloadPdf(id) {
+    const token = localStorage.getItem("marine_token");
+    const apiBase = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000/api";
+    window.open(`${apiBase}/purchase-orders/${id}/pdf?token=${token || ""}`, "_blank");
+  }
+
   return (
     <div>
       <div className="page-header">
@@ -129,6 +135,7 @@ export default function PurchaseOrders() {
                     <div className="action-row">
                       <button className="small-button" type="button" onClick={() => updateStatus(po.id, "pending_delivery")}>Pending Delivery</button>
                       <button className="small-button success" type="button" onClick={() => updateStatus(po.id, "delivered")}>Delivered</button>
+                      <button className="small-button" type="button" onClick={() => downloadPdf(po.id)}>PDF</button>
                     </div>
                   </td>
                 </tr>
