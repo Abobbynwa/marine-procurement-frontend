@@ -1,11 +1,14 @@
 import { NavLink } from "react-router-dom";
-import { BarChart3, ClipboardList, FilePlus2, Handshake, ShipWheel } from "lucide-react";
+import { BarChart3, ClipboardList, FilePlus2, Handshake, ShipWheel, FileQuestion, ReceiptText, ShoppingCart } from "lucide-react";
 
 const links = [
   { to: "/", label: "Dashboard", icon: BarChart3 },
   { to: "/requests", label: "Requests", icon: ClipboardList },
   { to: "/requests/new", label: "New Request", icon: FilePlus2 },
-  { to: "/vendors", label: "Vendors", icon: Handshake }
+  { to: "/vendors", label: "Vendors", icon: Handshake },
+  { to: "/rfqs", label: "RFQs", icon: FileQuestion },
+  { to: "/quotations", label: "Quotations", icon: ReceiptText },
+  { to: "/purchase-orders", label: "Purchase Orders", icon: ShoppingCart }
 ];
 
 export default function Sidebar() {
