@@ -10,7 +10,8 @@ import {
   ShoppingCart,
   Truck,
   FileText,
-  CreditCard
+  CreditCard,
+  LineChart
 } from "lucide-react";
 
 const links = [
@@ -23,7 +24,8 @@ const links = [
   { to: "/purchase-orders", label: "Purchase Orders", icon: ShoppingCart },
   { to: "/deliveries", label: "Deliveries", icon: Truck },
   { to: "/invoices", label: "Invoices", icon: FileText },
-  { to: "/payments", label: "Payments", icon: CreditCard }
+  { to: "/payments", label: "Payments", icon: CreditCard },
+  { to: "/reports", label: "Reports", icon: LineChart }
 ];
 
 export default function Sidebar() {
