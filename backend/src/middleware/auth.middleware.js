@@ -2,13 +2,20 @@ import jwt from "jsonwebtoken";
 
 export function requireAuth(req, res, next) {
   const header = req.headers.authorization;
+  const queryToken = req.query?.token;
+  let token = null;
 
-  if (!header || !header.startsWith("Bearer ")) {
+  if (header && header.startsWith("Bearer ")) {
+    token = header.split(" ")[1];
+  } else if (queryToken) {
+    token = queryToken;
+  }
+
+  if (!token) {
     return res.status(401).json({ message: "Authentication required" });
   }
 
   try {
-    const token = header.split(" ")[1];
     req.user = jwt.verify(token, process.env.JWT_SECRET);
     next();
   } catch (error) {
