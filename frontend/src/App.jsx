@@ -6,6 +6,9 @@ import Dashboard from "./pages/Dashboard.jsx";
 import Requests from "./pages/Requests.jsx";
 import CreateRequest from "./pages/CreateRequest.jsx";
 import Vendors from "./pages/Vendors.jsx";
+import RFQs from "./pages/RFQs.jsx";
+import Quotations from "./pages/Quotations.jsx";
+import PurchaseOrders from "./pages/PurchaseOrders.jsx";
 
 function ProtectedRoute({ children }) {
   const { isAuthenticated } = useAuth();
@@ -28,6 +31,9 @@ export default function App() {
         <Route path="requests" element={<Requests />} />
         <Route path="requests/new" element={<CreateRequest />} />
         <Route path="vendors" element={<Vendors />} />
+        <Route path="rfqs" element={<RFQs />} />
+        <Route path="quotations" element={<Quotations />} />
+        <Route path="purchase-orders" element={<PurchaseOrders />} />
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
