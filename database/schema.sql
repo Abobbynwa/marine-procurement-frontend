@@ -170,6 +170,19 @@ CREATE TABLE IF NOT EXISTS payments (
   created_at TIMESTAMP NOT NULL DEFAULT NOW()
 );
 
+CREATE TABLE IF NOT EXISTS uploaded_files (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  original_name VARCHAR(255) NOT NULL,
+  stored_name VARCHAR(255) NOT NULL,
+  file_url TEXT NOT NULL,
+  mime_type VARCHAR(120),
+  size_bytes INTEGER,
+  entity_type VARCHAR(80),
+  entity_id UUID,
+  uploaded_by UUID REFERENCES users(id) ON DELETE SET NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT NOW()
+);
+
 CREATE TABLE IF NOT EXISTS audit_logs (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   user_id UUID REFERENCES users(id) ON DELETE SET NULL,
@@ -185,3 +198,5 @@ CREATE INDEX IF NOT EXISTS idx_purchase_requests_status ON purchase_requests(sta
 CREATE INDEX IF NOT EXISTS idx_purchase_requests_requester ON purchase_requests(requester_id);
 CREATE INDEX IF NOT EXISTS idx_rfqs_status ON rfqs(status);
 CREATE INDEX IF NOT EXISTS idx_purchase_orders_status ON purchase_orders(status);
+CREATE INDEX IF NOT EXISTS idx_uploaded_files_entity ON uploaded_files(entity_type, entity_id);
+CREATE INDEX IF NOT EXISTS idx_audit_logs_created_at ON audit_logs(created_at);
