@@ -6,9 +6,11 @@
   "main": "src/server.js",
   "scripts": {
     "dev": "nodemon src/server.js",
-    "start": "node src/server.js"
+    "start": "node src/server.js",
+    "start:prod": "NODE_ENV=production node src/server.js"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "latest",
     "bcryptjs": "latest",
     "cors": "latest",
     "dotenv": "latest",
