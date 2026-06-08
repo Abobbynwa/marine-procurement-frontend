@@ -12,6 +12,7 @@ import PurchaseOrders from "./pages/PurchaseOrders.jsx";
 import Deliveries from "./pages/Deliveries.jsx";
 import Invoices from "./pages/Invoices.jsx";
 import Payments from "./pages/Payments.jsx";
+import Reports from "./pages/Reports.jsx";
 
 function ProtectedRoute({ children }) {
   const { isAuthenticated } = useAuth();
@@ -40,6 +41,7 @@ export default function App() {
         <Route path="deliveries" element={<Deliveries />} />
         <Route path="invoices" element={<Invoices />} />
         <Route path="payments" element={<Payments />} />
+        <Route path="reports" element={<Reports />} />
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
