@@ -16,6 +16,7 @@ import Payments from "./pages/Payments.jsx";
 import Reports from "./pages/Reports.jsx";
 import AuditLogs from "./pages/AuditLogs.jsx";
 import Documents from "./pages/Documents.jsx";
+import AdminConsole from "./pages/AdminConsole.jsx";
 
 function ProtectedRoute({ children }) {
   const { isAuthenticated } = useAuth();
@@ -50,6 +51,7 @@ export default function App() {
         }
       >
         <Route index element={<Dashboard />} />
+        <Route path="admin-console" element={withRole(<AdminConsole />)} />
         <Route path="requests" element={withRole(<Requests />)} />
         <Route path="requests/new" element={withRole(<CreateRequest />)} />
         <Route path="vendors" element={withRole(<Vendors />)} />
