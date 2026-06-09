@@ -39,10 +39,10 @@ export default function Login() {
         {error && <div className="error-box">{error}</div>}
 
         <label>Email Address</label>
-        <input name="email" type="email" value={form.email} onChange={handleChange} required />
+        <input name="Kindly enter your email" type="email" value={form.email} onChange={handleChange} required />
 
         <label>Password</label>
-        <input name="password" type="password" value={form.password} onChange={handleChange} required />
+        <input name="Kindly enter your password" type="password" value={form.password} onChange={handleChange} required />
 
         <button className="primary-button full-width" disabled={loading} type="submit">
           {loading ? "Logging in..." : "Login"}
